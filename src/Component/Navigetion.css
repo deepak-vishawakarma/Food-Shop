@@ -1,0 +1,253 @@
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Variables */
+    --primary-color: #4a90e2;
+    --secondary-color: #357abd;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --input-background: #f4f4f4;
+
+    /* Responsive Typography */
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navigation Container */
+.Navigetion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2%;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+/* Logo Styling */
+.Logo {
+    display: flex;
+    align-items: center;
+}
+
+.Logo h1 {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Search Input Container */
+.Input {
+    display: flex;
+    align-items: center;
+    background-color: var(--input-background);
+    border-radius: 25px;
+    overflow: hidden;
+    max-width: 400px;
+    width: 100%;
+}
+
+.Input input {
+    flex-grow: 1;
+    border: none;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    font-size: var(--font-size-base);
+    outline: none;
+}
+
+.Input button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Input button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Navigation Links */
+.Info {
+    display: flex;
+    list-style-type: none;
+    gap: 1.5rem;
+}
+
+.Info li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.Info li a:hover {
+    color: var(--primary-color);
+}
+
+.Info li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.Info li a:hover::after {
+    width: 100%;
+}
+
+/* Extreme Large Screens (4K and Above) */
+@media screen and (min-width: 2560px) {
+    .Navigetion {
+        max-width: 1920px;
+        padding: 1.5rem 5%;
+    }
+
+    .Logo h1 {
+        font-size: 2.5rem;
+    }
+
+    .Input {
+        max-width: 500px;
+    }
+
+    .Info {
+        gap: 2.5rem;
+    }
+
+    .Info li a {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablet and Mobile Landscape Mode */
+@media screen and (max-width: 1024px) {
+    .Navigetion {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 1rem 3%;
+    }
+
+    .Logo, .Input, .Info {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .Input {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .Info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Mobile Devices (Portrait) */
+@media screen and (max-width: 480px) {
+    .Navigetion {
+        flex-direction: column;
+        padding: 0.5rem 2%;
+    }
+
+    .Logo h1 {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    .Input {
+        width: 95%;
+        max-width: 95%;
+    }
+
+    .Input input {
+        font-size: var(--font-size-small);
+    }
+
+    .Input button {
+        padding: 0.5rem 1rem;
+        font-size: var(--font-size-small);
+    }
+
+    .Info {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .Info li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Ultra Small Devices */
+@media screen and (max-width: 320px) {
+    .Logo h1 {
+        font-size: 1rem;
+    }
+
+    .Input {
+        width: 100%;
+    }
+
+    .Input input, 
+    .Input button {
+        font-size: 12px;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Accessibility and Print Styles */
+@media print {
+    .Navigetion {
+        box-shadow: none;
+        border-bottom: 1px solid #000;
+    }
+
+    .Input button {
+        display: none;
+    }
+}
+
+/* High Contrast Mode */
+@media screen and (-ms-high-contrast: active) {
+    .Navigetion {
+        border: 2px solid currentColor;
+    }
+
+    .Info li a {
+        border-bottom: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
